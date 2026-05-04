@@ -117,20 +117,14 @@ class EdgeImpulseClassifier {
         // LÓGICA DE DETECCIÓN Y VIBRACIÓN
         // ==========================================
         jsResult.results.forEach(res => {
-            // Comprobamos si la etiqueta es 'snoring' (o 'ronquido') y la confianza es > 85%
-            if (res.label.toLowerCase() === 'snoring' && res.value > 0.85) {
-                console.log("¡RONQUIDO DETECTADO! Probabilidad:", res.value);
-                
-                // Vibración del dispositivo
-                if (navigator.vibrate) {
-                    // Vibra 500ms, para 200ms, vibra 500ms
-                    navigator.vibrate([500, 200, 500]);
-                }
-
-                // OPCIONAL: Descomenta la línea de abajo cuando tengas tu cuenta de IFTTT
-                // fetch('https://maker.ifttt.com/trigger/ronquido_detectado/with/key/TU_LLAVE_AQUI');
-            }
-        });
+    // El .toLowerCase() convierte "Snoring" en "snoring" automáticamente
+    if (res.label.toLowerCase() === 'snoring' && res.value > 0.85) {
+        console.log("¡Ronquido detectado!");
+        if (navigator.vibrate) {
+            navigator.vibrate([500, 200, 500]); // Patrón de vibración
+        }
+    }
+});
         // ==========================================
 
         if (props.has_object_tracking) {
