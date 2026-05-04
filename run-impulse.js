@@ -93,6 +93,11 @@ class EdgeImpulseClassifier {
         let jsResult = {
             anomaly: ret.anomaly,
             results: []
+         if (window.updateUI) { window.updateUI(jsResult.results); }
+
+    ret.delete();
+    return ptr;
+}
         };
 
         for (let cx = 0; cx < ret.size(); cx++) {
