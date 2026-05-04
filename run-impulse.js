@@ -93,11 +93,6 @@ class EdgeImpulseClassifier {
         let jsResult = {
             anomaly: ret.anomaly,
             results: []
-         if (window.updateUI) { window.updateUI(jsResult.results); }
-
-    ret.delete();
-    return ptr;
-}
         };
 
         for (let cx = 0; cx < ret.size(); cx++) {
@@ -110,7 +105,14 @@ class EdgeImpulseClassifier {
             }
             c.delete();
         }
+    if (window.updateUI) { 
+            window.updateUI(jsResult.results); 
+        }
+        // =========================
 
+        ret.delete();
+        return jsResult; // O el valor de retorno que tuviera originalmente tu script
+    }
         // ==========================================
         // LÓGICA DE DETECCIÓN Y VIBRACIÓN
         // ==========================================
