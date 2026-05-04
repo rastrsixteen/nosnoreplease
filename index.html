@@ -27,8 +27,18 @@
     </div>
 
     <!-- CARGA DE SCRIPTS CON PAUSA PARA EVITAR ERRORES -->
-    <script src="edge-impulse-standalone.js"></script>
-    <script src="run-impulse.js"></script>
+    <!-- Busca estas dos líneas en tu index.html y cámbialas por esto -->
+    <script src="./edge-impulse-standalone.js"></script>
+    <script src="./run-impulse.js"></script>
+
+    <script>
+        // Añadimos esto para verificar qué está pasando exactamente
+        window.onerror = function(msg, url, line) {
+            statusDiv.innerText = "Error cargando archivo: " + msg;
+            return false;
+        };
+
+        // ... resto de tu código del botón ...
 
     <script>
         const predictionList = document.getElementById('prediction-list');
